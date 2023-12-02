@@ -4,24 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Lembre-se de substituir pelo caminho real do seu arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'home/css/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Salão de Beleza</title>
 </head>
 <body>
 
-<div class="container">
-    <!-- Menu lateral -->
-    <nav class="sidebar">
-        <ul>
-            <li><a href="#hero">Início</a></li>
-            <li><a href="#services">Serviços</a></li>
-            <li><a href="#testimonials">Depoimentos</a></li>
-            <li><a href="#appointment">Agendamento</a></li>
-            <li><a href="#login">Login</a></li>
-            <li><a href="#signup">Cadastro</a></li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home">Studio Gessica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#hero">Início <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#services">Serviços</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#testimonials">Depoimentos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/agenda/">Agendamento</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/blog/">blog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/sobre/">Sobre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contato/">Contato</a>
+            </li>
+            
         </ul>
-    </nav>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/login/">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/usuarios/cadastro/">Cadastro</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
+<div class="container">
     <!-- Conteúdo principal -->
     <div class="main-content">
         <section id="hero">
@@ -30,65 +60,45 @@
             <p>Oferecemos serviços de esmaltação em gel, unha de fibra, depilação e design de sobrancelhas.</p>
         </section>
 
+        <section id="testimonials">
+            <div class="container">
+                <h2>Depoimentos</h2>
+                <!-- Adicione depoimentos dos clientes -->
+                <div class="testimonial">
+                    <p>"O serviço é incrível! Sempre saio satisfeita."</p>
+                    <p class="client">- Maria</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Profissionais muito qualificados. Recomendo!"</p>
+                    <p class="client">- João</p>
+                </div>
+            </div>
+        </section>
 
-<section id="testimonials">
-    <div class="container">
-        <h2>Depoimentos</h2>
-        <!-- Adicione depoimentos dos clientes -->
-        <div class="testimonial">
-            <p>"O serviço é incrível! Sempre saio satisfeita."</p>
-            <p class="client">- Maria</p>
-        </div>
-        <div class="testimonial">
-            <p>"Profissionais muito qualificados. Recomendo!"</p>
-            <p class="client">- João</p>
-        </div>
+        <section id="appointment">
+            <div class="container">
+                <h2>Agende Seu Serviço</h2>
+                <!-- Adicione formulário de agendamento -->
+                <form action="{% url 'cadastro' %}" method="post">
+                    {% csrf_token %}
+                    <!-- Campos do formulário (data, horário, serviço desejado, etc.) -->
+                    <label for="service">Escolha o Serviço:</label>
+                    <select id="service" name="service">
+                        <option value="esmalte-gel">Esmaltação em Gel</option>
+                        <option value="unha-fibra">Unha de Fibra</option>
+                        <option value="depilacao">Depilação</option>
+                        <option value="sobrancelha">Design de Sobrancelhas</option>
+                    </select>
+                    <button type="submit">Agendar</button>
+                </form>
+            </div>
+        </section>
     </div>
-</section>
+</div>
 
-<section id="appointment">
-    <div class="container">
-        <h2>Agende Seu Serviço</h2>
-        <!-- Adicione formulário de agendamento -->
-        <form action="{% url 'cadastro' %}" method="post">
-            {% csrf_token %}
-            <!-- Campos do formulário (data, horário, serviço desejado, etc.) -->
-            <label for="service">Escolha o Serviço:</label>
-            <select id="service" name="service">
-                <option value="esmalte-gel">Esmaltação em Gel</option>
-                <option value="unha-fibra">Unha de Fibra</option>
-                <option value="depilacao">Depilação</option>
-                <option value="sobrancelha">Design de Sobrancelhas</option>
-            </select>
-            <button type="submit">Agendar</button>
-        </form>
-    </div>
-</section>
-
-<section id="login">
-    <div class="container">
-        <h2>Login</h2>
-        <!-- Adicione formulário de login -->
-        <form action="/login/" method="post">
-            <!-- Campos do formulário (usuário, senha, etc.) -->
-            <!-- Botão de envio -->
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
-</section>
-
-<section id="signup">
-    <div class="container">
-        <h2>Cadastre-se</h2>
-        <!-- Adicione formulário de cadastro -->
-        <form action="/usuarios/cadastro/" method="post">
-            <!-- Campos do formulário (nome, e-mail, senha, etc.) -->
-            <!-- Botão de envio -->
-            <button type="submit">Cadastrar</button>
-        </form>
-    </div>
-</section>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>
-
