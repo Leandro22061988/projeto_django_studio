@@ -1,0 +1,83 @@
+/* Reset de estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 20px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px 0;
+}
+
+.sidebar a:hover {
+    background-color: #495057;
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #007bff;
+    padding: 10px 0;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.navbar a:hover {
+    background-color: #0056b3;
+}
+
+/* Seções */
+section {
+    margin: 30px 0;
+}
+
+/* Formulários */
+form {
+    margin-top: 20px;
+}
+
+/* Botão padrão */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

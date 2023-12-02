@@ -1,0 +1,26 @@
+<!-- templates/agendamento.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Agendamento</h2>
+  
+  <!-- Mostrar os horários disponíveis -->
+  <h3>Horários Disponíveis</h3>
+  <ul>
+    {% for horario in horarios_disponiveis %}
+      <li>{{ horario }} <a href="{% url 'agendamento_add' horario %}">Adicionar</a></li>
+    {% endfor %}
+  </ul>
+  
+  <!-- Mostrar os horários agendados -->
+  <h3>Horários Agendados</h3>
+  <ul>
+    {% for agendamento in agendamentos %}
+      <li>{{ agendamento.horario }} - {{ agendamento.nome }} 
+        <a href="{% url 'agendamento_edit' agendamento.id %}">Editar</a>
+        <a href="{% url 'agendamento_cancelar' agendamento.id %}">Cancelar</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

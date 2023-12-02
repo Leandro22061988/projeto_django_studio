@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Página Inicial</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Meu Blog</h1>
+        <p>Bem-vindo ao meu blog!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'blog' %}">Início</a></li>
+            
+        </ul>
+    </nav>
+
+    <main>
+        <section class="blog-posts">
+            {% for post in blog_posts %}
+                <article>
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.content }}</p>
+                    <small>Publicado em: {{ post.date_published }}</small>
+                </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Meu Blog</p>
+    </footer>
+
+</body>
+</html>
