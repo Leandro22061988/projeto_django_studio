@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'login',
     'sobre',
     'contato',
+    'depoimentos',
 ]
 
 MIDDLEWARE = [
@@ -114,6 +115,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 AUTH_USER_MODEL = 'usuarios.CustomUser'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'seu_servidor_smtp'
+EMAIL_PORT = 'sua_porta_smtp'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'seu_email'
+EMAIL_HOST_PASSWORD = 'sua_senha'
 
 
 # Default primary key field type

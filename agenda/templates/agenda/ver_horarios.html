@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Horários Disponíveis</title>
+</head>
+<body>
+
+  <!-- Adicione um nav bar (barra de navegação) -->
+  <nav>
+    <ul>
+      <li><a href="{% url 'agenda:agenda' %}">Home</a></li>
+    </ul>
+  </nav>
+
+  <h1>Horários Disponíveis</h1>
+
+  <!-- Adicione um formulário para selecionar o serviço -->
+  <form method="post" action="{% url 'agenda:ver_horarios' %}">
+    
+    {% csrf_token %}
+    <label for="servico_id">Selecione um serviço:</label>
+    <select name="servico_id" id="servico_id">
+      <!-- Preencha dinamicamente as opções com os serviços disponíveis -->
+      {% for servico in servicos_disponiveis %}
+        <option value="{{ servico.id }}">{{ servico.nome }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Ver Horários</button>
+  </form>
+
+  <!-- Mostre os horários disponíveis -->
+  <h3>Horários Disponíveis para o Serviço Selecionado</h3>
+  <ul>
+    {% for horario in horarios_disponiveis %}
+      <li>{{ horario }}</li>
+    {% empty %}
+      <p>Nenhum horário disponível para o serviço selecionado.</p>
+    {% endfor %}
+  </ul>
+
+</body>
+</html>

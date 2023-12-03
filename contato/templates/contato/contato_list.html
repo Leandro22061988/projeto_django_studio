@@ -1,18 +1,18 @@
-<!-- No arquivo templates/contato/contato_list.html -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Lista de Contatos</title>
+    <link rel="stylesheet" href=" /static/css/contato.css">
 </head>
 <body>
     <h1>Lista de Contatos</h1>
 
-    <!-- Link para a lista de contatos -->
     <a href="{% url 'contato-list' %}">Ver Lista de Contatos</a>
     
     <!-- Adicione o código para exibir a lista de contatos aqui -->
     {% for contato in contatos %}
-        <!-- Exibir detalhes do contato conforme necessário -->
+    
         {{ contato.nome }} - {{ contato.email }} - {{ contato.telefone }} - {{ contato.endereco }}
         <br>
     {% endfor %}

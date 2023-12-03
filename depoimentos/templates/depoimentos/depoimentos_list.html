@@ -1,0 +1,24 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% load static %}
+{% block content %}
+  <h1>Depoimentos</h1>
+  
+  <a href="{% url 'depoimentos:depoimento-create' %}">Adicionar Novo Depoimento</a>
+
+  {% if depoimentos %}
+    <ul>
+      {% for depoimento in depoimentos %}
+        <li>
+          <strong>{{ depoimento.nome }}</strong><br>
+          {{ depoimento.mensagem }}<br>
+          Data: {{ depoimento.data_publicacao|date:"F j, Y H:i" }}<br>
+          <!-- Adicione links para editar e excluir usando a tag url -->
+          <a href="{% url 'depoimentos:depoimento-update' depoimento.pk %}">Editar</a>
+          <a href="{% url 'depoimentos:depoimento-delete' depoimento.pk %}">Excluir</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhum depoimento disponível no momento.</p>
+  {% endif %}
+{% endblock %}

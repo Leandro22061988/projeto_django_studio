@@ -1,4 +1,3 @@
-# views.py no seu aplicativo de usuários
 
 from django.shortcuts import render, redirect
 from .forms import CadastroForm

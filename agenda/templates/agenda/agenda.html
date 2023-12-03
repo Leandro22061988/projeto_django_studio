@@ -1,26 +1,134 @@
-<!-- templates/agendamento.html -->
+{% comment %} <!-- C:\SeuCaminho\Para\O\Arquivo\agenda.html -->
 
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+</head>
+<body>
 
-{% block content %}
   <h2>Agendamento</h2>
   
   <!-- Mostrar os horários disponíveis -->
   <h3>Horários Disponíveis</h3>
   <ul>
     {% for horario in horarios_disponiveis %}
-      <li>{{ horario }} <a href="{% url 'agendamento_add' horario %}">Adicionar</a></li>
+       <li>
+          {{ horario }} 
+          <a href="{% url 'agenda:agendamento_add' horario %}">Adicionar</a>
+       </li>
     {% endfor %}
   </ul>
-  
+   
   <!-- Mostrar os horários agendados -->
   <h3>Horários Agendados</h3>
   <ul>
     {% for agendamento in agendamentos %}
-      <li>{{ agendamento.horario }} - {{ agendamento.nome }} 
-        <a href="{% url 'agendamento_edit' agendamento.id %}">Editar</a>
-        <a href="{% url 'agendamento_cancelar' agendamento.id %}">Cancelar</a>
+      <li>
+        {{ agendamento.horario }} - {{ agendamento.nome }} 
+        <a href="{% url 'agenda:agendamento_edit' agendamento.id %}">Editar</a>
+        <a href="{% url 'agenda:agendamento_cancelar' agendamento.id %}">Cancelar</a>
       </li>
+    {% empty %}
+      <p>Nenhum horário agendado.</p>
     {% endfor %}
   </ul>
-{% endblock %}
+
+</body>
+</html> {% endcomment %}
+
+<!-- C:\SeuCaminho\Para\O\Arquivo\agenda.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <style>
+        /* Adicione estilos conforme necessário */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{% url 'agenda:agenda' %}">Home</a>
+</div>
+
+<h2>Agendamento</h2>
+
+<!-- Serviços disponíveis -->
+<h3>Escolha um Serviço</h3>
+<form method="post" action="{% url 'ver_horarios' %}">
+
+    <select name="servico" id="servico">
+        {% for servico in servicos_disponiveis %}
+            <option value="{{ servico }}">{{ servico }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Ver Horários Disponíveis</button>
+</form>
+
+<!-- Mostrar os horários disponíveis -->
+<h3>Horários Disponíveis</h3>
+<ul>
+    {% for horario in horarios_disponiveis %}
+        <li>
+            {{ horario }} 
+            <a href="{% url 'agenda:agendamento_add' horario %}">Adicionar</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- Mostrar os horários agendados -->
+<h3>Horários Agendados</h3>
+<ul>
+    {% for agendamento in agendamentos %}
+        <li>
+            {{ agendamento.horario }} - {{ agendamento.servico.nome }}
+            <a href="{% url 'agenda:agendamento_edit' agendamento.id %}">Editar</a>
+            <a href="{% url 'agenda:agendamento_cancelar' agendamento.id %}">Cancelar</a>
+        </li>
+    {% empty %}
+        <p>Nenhum horário agendado.</p>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

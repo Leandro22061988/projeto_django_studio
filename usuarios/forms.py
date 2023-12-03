@@ -1,4 +1,3 @@
-# forms.py no seu aplicativo de usuários
 
 from django import forms
 from .models import CustomUser
