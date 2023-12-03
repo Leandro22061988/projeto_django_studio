@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'agenda',
     'login',
     'sobre',
+    'contato',
 ]
 
 MIDDLEWARE = [

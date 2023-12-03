@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Lista de Contatos</h2>
+  <!-- No seu template, onde você deseja criar um link para a lista de contatos -->
+<a href="{% url 'contato-list' %}">Lista de Contatos</a>
+
+
+  <!-- Botão para abrir o modal de adição de contato -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addContactModal">
+    Adicionar Contato
+  </button>
+
+  <!-- Tabela para mostrar os contatos -->
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Iteração sobre os contatos -->
+      {% for contato in contatos %}
+        <tr>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.email }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>
+            <!-- Botões para abrir os modais de edição/exclusão -->
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editContactModal{{ contato.id }}">
+              Editar
+            </button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteContactModal{{ contato.id }}">
+              Excluir
+            </button>
+          </td>
+        </tr>
+
+        <!-- Modal de Edição -->
+        <div class="modal fade" id="editContactModal{{ contato.id }}" tabindex="-1" aria-labelledby="editContactModalLabel" aria-hidden="true">
+          <!-- Conteúdo do modal de edição (formulário) aqui -->
+        </div>
+
+        <!-- Modal de Exclusão -->
+        <div class="modal fade" id="deleteContactModal{{ contato.id }}" tabindex="-1" aria-labelledby="deleteContactModalLabel" aria-hidden="true">
+          <!-- Conteúdo do modal de exclusão (formulário) aqui -->
+        </div>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Modal de Adição -->
+  <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+    <!-- Conteúdo do modal de adição (formulário) aqui -->
+  </div>
+
+{% endblock %}
