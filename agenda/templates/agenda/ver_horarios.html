@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <!-- Adicione um nav bar (barra de navegação) -->
+  <!-- Adicione uma barra de navegação -->
   <nav>
     <ul>
       <li><a href="{% url 'agenda:agenda' %}">Home</a></li>
@@ -17,29 +17,28 @@
 
   <h1>Horários Disponíveis</h1>
 
-  <!-- Adicione um formulário para selecionar o serviço -->
-  <form method="post" action="{% url 'agenda:ver_horarios' %}">
-    
+  <form method="post" action="{% url 'ver_horarios' %}">
     {% csrf_token %}
-    <label for="servico_id">Selecione um serviço:</label>
+    <label for="servico_id">Selecione o serviço:</label>
     <select name="servico_id" id="servico_id">
-      <!-- Preencha dinamicamente as opções com os serviços disponíveis -->
-      {% for servico in servicos_disponiveis %}
-        <option value="{{ servico.id }}">{{ servico.nome }}</option>
-      {% endfor %}
+        {% for servico in servicos %}
+            <option value="{{ servico.id }}">{{ servico.nome }}</option>
+        {% endfor %}
     </select>
-    <button type="submit">Ver Horários</button>
-  </form>
+    <input type="submit" value="Ver Horários Disponíveis">
+</form>
 
-  <!-- Mostre os horários disponíveis -->
-  <h3>Horários Disponíveis para o Serviço Selecionado</h3>
-  <ul>
+
+
+<h3>Horários Disponíveis para o Serviço Selecionado</h3>
+<ul>
     {% for horario in horarios_disponiveis %}
-      <li>{{ horario }}</li>
+        <li>{{ horario }}</li>
     {% empty %}
-      <p>Nenhum horário disponível para o serviço selecionado.</p>
+        <p>Nenhum horário disponível para o serviço selecionado.</p>
     {% endfor %}
-  </ul>
+</ul>
+
 
 </body>
 </html>

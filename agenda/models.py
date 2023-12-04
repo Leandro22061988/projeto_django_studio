@@ -1,4 +1,3 @@
-# models.py
 from django.db import models
 
 class Servico(models.Model):
@@ -6,6 +5,13 @@ class Servico(models.Model):
 
     def __str__(self):
         return self.nome
+
+class Horario(models.Model):
+    servico = models.ForeignKey(Servico, related_name='horarios_disponiveis', on_delete=models.CASCADE)
+    horario = models.TimeField()
+
+    def __str__(self):
+        return f'{self.servico} - {self.horario}'
 
 class Agenda(models.Model):
     nome = models.CharField(max_length=255)

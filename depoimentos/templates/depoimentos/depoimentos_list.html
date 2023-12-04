@@ -15,6 +15,7 @@
           <!-- Adicione links para editar e excluir usando a tag url -->
           <a href="{% url 'depoimentos:depoimento-update' depoimento.pk %}">Editar</a>
           <a href="{% url 'depoimentos:depoimento-delete' depoimento.pk %}">Excluir</a>
+          
         </li>
       {% endfor %}
     </ul>

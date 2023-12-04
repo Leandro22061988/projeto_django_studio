@@ -1,23 +1,20 @@
-
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento</title>
+    <title>Criar Depoimento</title>
 </head>
 <body>
 
-<h1>Agendamento</h1>
-
-<form method="post" action="{% url 'agenda:agendamento_add' horario %}">
+  <h1>Criar Depoimento</h1>
+  
+  <form method="post" action="{% url 'depoimentos:depoimento-create' %}">
     {% csrf_token %}
-    
     {{ form.as_p }}
-    
-    <button type="submit">Agendar</button>
+    <button type="submit">Enviar</button>
 </form>
+
 
 </body>
 </html>

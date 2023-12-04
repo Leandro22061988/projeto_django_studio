@@ -1,8 +1,7 @@
-# No arquivo views.py do app depoimentos
-
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Depoimento
 from .forms import DepoimentoForm
+
 
 def depoimentos(request):
     depoimentos = Depoimento.objects.all()
@@ -16,7 +15,9 @@ def criar_depoimento(request):
             return redirect('depoimentos:depoimentos-list')
     else:
         form = DepoimentoForm()
+
     return render(request, 'depoimentos/depoimento_form.html', {'form': form})
+
 
 def atualizar_depoimento(request, pk):
     depoimento = get_object_or_404(Depoimento, pk=pk)
@@ -27,6 +28,7 @@ def atualizar_depoimento(request, pk):
             return redirect('depoimentos:depoimentos-list')
     else:
         form = DepoimentoForm(instance=depoimento)
+
     return render(request, 'depoimentos/depoimento_form.html', {'form': form})
 
 def excluir_depoimento(request, pk):

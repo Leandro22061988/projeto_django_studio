@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Agenda
-from .forms import AgendaForm  # Certifique-se de criar um formulário para o modelo Agenda
-from .models import Servico  # Certifique-se de importar o modelo Servico
+from .models import Agenda, Servico
+from .forms import AgendaForm
+from django.views.decorators.csrf import csrf_protect
+from .models import Servico 
 
 def agenda(request):
     horarios_disponiveis = ["08:00", "09:00", "10:00"]  # Substitua pelos horários reais
     agendamentos = Agenda.objects.all()  # Modifique para obter os agendamentos reais do banco de dados
-
+    servicos_disponiveis = Servico.objects.all()  
     return render(request, 'agenda/agenda.html', {'horarios_disponiveis': horarios_disponiveis, 'agendamentos': agendamentos})
 
 def agendamento_add(request, horario):
@@ -44,15 +45,17 @@ def agendamento_cancelar(request, agendamento_id):
 
     return render(request, 'agenda/agendamento_cancelar.html', {'agendamento': agendamento})
 
+@csrf_protect
 def ver_horarios(request):
-    if request.method == 'POST':
-        # Processar o formulário, obter o serviço selecionado e buscar os horários disponíveis
-        servico_id = request.POST.get('servico')  # Certifique-se de ter um campo 'servico' no seu formulário
-        servico = get_object_or_404(Servico, id=servico_id)
-        horarios_disponiveis = servico.horarios_disponiveis.all()  # Modifique conforme a relação entre Servico e Horario
+    servicos = Servico.objects.all()  # Obtenha todos os serviços disponíveis
 
-        # Renderizar a página com os horários disponíveis
+    if request.method == 'POST':
+        servico_id = request.POST.get('servico_id')
+        servico = get_object_or_404(Servico, id=servico_id)
+        horarios_disponiveis = servico.horarios_disponiveis.all()
+
+        # Certifique-se de que está passando os horários disponíveis para o template
         return render(request, 'agenda/ver_horarios.html', {'horarios_disponiveis': horarios_disponiveis})
 
     # Se o método não for POST, você pode renderizar a página inicial ou redirecionar para a home
-    return render(request, 'agenda/home.html')  # Certifique-se de ter um arquivo home.html no seu diretório templates
+    return render(request, 'agenda/home.html', {'servicos': servicos})
