@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Meu Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+<style>
+    body {
+        font-family: sistem-ui, -appl;
+        margin: 0;
+        padding: 0;
+    }
+    
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+    }
+    
+    nav {
+        background-color: #444;
+    }
+    
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+    }
+    
+    nav li {
+        margin-right: 10px;
+    }
+    
+    nav a {
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 30px;
+        padding: 20px;
+    }
+    
+    article {
+        border: 3px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    
+    footer {
+        background-color: #333;
+        color: #fff;
+        padding: 0.3em;
+        text-align: center;
+    }
+    
+</style>    
+    <header>
+        <h1>Meu Blog</h1>
+        <p>Bem-vindo ao meu blog!</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Início</a></li>
+            <li><a href="{% url 'add_post' %}">Adicionar Post</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Meu Blog</p>
+    </footer>
+
+</body>
+</html>
