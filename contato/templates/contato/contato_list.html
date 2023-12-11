@@ -1,20 +1,12 @@
+{% comment %} {% extends "base.html" %} {% endcomment %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Contatos</title>
-    <link rel="stylesheet" href=" /static/css/contato.css">
-</head>
-<body>
-    <h1>Lista de Contatos</h1>
 
-    <a href="{% url 'contato-list' %}">Ver Lista de Contatos</a>
-    
-    <!-- Adicione o código para exibir a lista de contatos aqui -->
-    {% for contato in contatos %}
-    
-        {{ contato.nome }} - {{ contato.email }} - {{ contato.telefone }} - {{ contato.endereco }}
-        <br>
-    {% endfor %}
-</body>
-</html>
+{% block content %}
+  <h2>Lista de Contatos</h2>
+    <ul>
+      {% for contato in object_list %}
+      <li>{{ contato.nome }} - {{contato.telefone}} - {{ contato.email }} - <a href="{% url 'contato-update' pk=contato.pk %}">Editar</a> - <a href="{% url 'contato-delete' pk=contato.pk %}">Excluir</a></li>
+      {% endfor %}
+    </ul>
+    <a href="{% url 'contato-create' %}">Novo Contato</a>
+{% endblock %}

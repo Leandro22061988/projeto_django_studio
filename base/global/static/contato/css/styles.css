@@ -1,0 +1,44 @@
+body{
+    background-color: brown;
+}/* contato/static/contato/css/styles.css */
+
+/* Estilos para a tabela de contatos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilos para os botões */
+  a.button {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  a.button:hover {
+    background-color: #45a049;
+  }
+  
+  a.danger-button {
+    background-color: #f44336;
+  }
+  
+  a.danger-button:hover {
+    background-color: #d32f2f;
+  }
+  

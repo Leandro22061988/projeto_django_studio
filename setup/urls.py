@@ -18,7 +18,8 @@ urlpatterns = [
     path('agenda/', include('agenda.urls')),
     path('login/', include('login.urls')),
     path('sobre/', include('sobre.urls')),
-    path('depoimentos/', include('depoimentos.urls')),  # Adicionado a barra no final
+    path('depoimentos/', include('depoimentos.urls')),  
+     path('contato/', include('contato.urls')), 
     path('contato/', ContatoListView.as_view(), name='contato-list'),  
 ]
 

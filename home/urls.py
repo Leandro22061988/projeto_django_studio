@@ -1,8 +1,10 @@
-from django.urls import path
-from .views import home
 
+from django.urls import path
+from .views import home, LoginPageView, logout_view
 
 urlpatterns = [
-    path('', home, name='index'),
+    path('home/', home, name='home'),
+    path('login/', LoginPageView.as_view(), name='login'),  
+    path('logout/', logout_view, name='logout'),
+    
 ]
-

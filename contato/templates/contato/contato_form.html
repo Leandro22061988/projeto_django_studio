@@ -1,1 +1,26 @@
-<h1>Teste 2</h1>
+<!-- contato/templates/contato/contato_form.html -->
+
+{% load static %}
+
+{% block content %}
+  <h2>Novo Contato</h2>
+  
+  {% if messages %}
+    <!-- Exibe mensagens de sucesso -->
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <!-- Formulário de criação de contatos -->
+  <form method="post" action="{% url 'contato-create' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Adicionar Contato</button>
+  </form>
+
+  <!-- Adicione um link ou botão para voltar à lista de contatos -->
+  <a href="{% url 'contato-list' %}">Voltar à Lista de Contatos</a>
+{% endblock %}

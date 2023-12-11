@@ -3,6 +3,7 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.contrib import messages
 from .models import Contato
 from .forms import ContatoForm
 
@@ -16,6 +17,11 @@ class ContatoCreateView(CreateView):
     form_class = ContatoForm
     template_name = 'contato/contato_form.html'
     success_url = reverse_lazy('contato-list')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Contato criado com sucesso!')
+        return response
 
 class ContatoUpdateView(UpdateView):
     model = Contato

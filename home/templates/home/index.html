@@ -45,27 +45,27 @@
                 </li>
             </ul>
             
-            <ul class="navbar-nav ml-auto">
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <p class="nav-link">Logado como: {{ user.username }}</p>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}?next=home">Sair</a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login/">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/usuarios/cadastro/">Cadastro</a>
-                    </li>
-                {% endif %}
-            </ul><!-- Seção do menu de navegação -->
-           
+<!-- Seção do menu de navegação -->
+    <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <p class="nav-link">Logado como: {{ user.username }}</p>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}?next=home">Sair</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
             
-        </div>
-    </nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuarios/cadastro/">Cadastro</a>
+                </li>
+        {% endif %}
+    </ul>            
+            </div>
+        </nav>
     
     <div class="container">
         <!-- Conteúdo principal -->

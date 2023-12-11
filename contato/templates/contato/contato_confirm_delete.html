@@ -1,1 +1,16 @@
-<h1>Teste 3</h1>
+<!-- contato/templates/contato/contato_confirm_delete.html -->
+{% comment %} {% extends "base.html" %} {% endcomment %}
+{% load static %}
+
+{% block content %}
+  <h2>Confirmar Exclusão</h2>
+
+  <p>Tem certeza de que deseja excluir o contato "{{ object }}"?</p>
+
+  <form method="post" action="{% url 'contato-delete' pk=object.pk %}">
+    {% csrf_token %}
+    <input type="submit" value="Confirmar Exclusão">
+  </form>
+
+  <a href="{% url 'contato-list' %}">Cancelar e Voltar à Lista de Contatos</a>
+{% endblock %}

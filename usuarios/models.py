@@ -8,6 +8,12 @@ class CustomUser(AbstractUser):
     telefone = models.CharField(max_length=20, verbose_name='Telefone')
     email = models.EmailField(unique=True, verbose_name='E-mail')
 
+    # Remova 'email' de REQUIRED_FIELDS
+    REQUIRED_FIELDS = ['nome', 'sobrenome', 'telefone']
+
+    # Defina 'email' como USERNAME_FIELD
+    USERNAME_FIELD = 'email'
+
     def __str__(self):
         return f'{self.nome} {self.sobrenome}'
 
