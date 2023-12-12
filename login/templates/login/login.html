@@ -1,34 +1,33 @@
-{% load static %}
+{% extends "global/partials/base.html" %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href=" /static/css/login.css">
-    
-</head>
-<body>
-    <h2>Login</h2>
-    
-    {% if messages %}
+{% block content %}
+
+<nav class="navbar">
+    <a href="{% url 'home'%}">Página Inicial</a>
+    <a href="#">Contatos</a>
+    <a href="#">Sobre</a>
+    <a href="#">Blog</a>
+    <!-- Adicione mais links conforme necessário -->
+  </nav>
+
+  <h2>Login</h2>
+  
+  {% if messages %}
     <ul class="messages">
-        {% for message in messages %}
+      {% for message in messages %}
         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
+      {% endfor %}
     </ul>
-    {% endif %}
-    
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <label for="username">Usuário:</label>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required><br>
-        <input type="submit" value="Login">
-    </form>
+  {% endif %}
+  
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <label for="username">Usuário:</label>
+    <input type="text" id="username" name="username" required><br>
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" required><br>
+    <input type="submit" value="Login">
+  </form>
 
-    <a href="{% url 'password_reset' %}">Esqueci minha senha</a>
-</body>
-</html>
+  <a href="{% url 'password_reset' %}">Esqueci minha senha</a>
+{% endblock %}

@@ -1,9 +1,16 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'home/css/styles.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <title>Salão de Beleza</title>
+    <link rel="stylesheet" href="{% static 'usuarios/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/login/login.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/contato/contato_forms.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/contato/contato_list.css' %}">
+    <link rel="stylesheet" href="{% static 'global/css/contato/contato_confirm_delete.css' %}">
+
+    {% block styles %}{% endblock %}
+    <title>{% block title %}Studio{% endblock title %}</title>
 </head>
+<body>

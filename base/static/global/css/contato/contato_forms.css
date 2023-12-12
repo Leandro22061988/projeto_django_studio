@@ -1,0 +1,98 @@
+body {
+    padding-top: 56px; /* Adapte para o tamanho da barra de navegação */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Adapte a fonte conforme necessário */
+  }
+
+  nav {
+    background-color: #f8f9fa; /* Cor de fundo suave da barra de navegação */
+    padding: 15px;
+    box-shadow: 0 4px 2px -2px gray; /* Sombra suave na barra de navegação */
+  }
+
+  nav a {
+    color: #007bff; /* Cor do texto dos links */
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 12px; /* Espaçamento interno dos links */
+    border-radius: 5px; /* Cantos arredondados dos links */
+  }
+
+  nav a:hover {
+    background-color: #007bff;
+    color: #fff; /* Cor do texto ao passar o mouse */
+  }
+
+  h2 {
+    color: #007bff;
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f8f9fa;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  input, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Borda fina ao redor dos campos de entrada e botão */
+    border-radius: 5px; /* Cantos arredondados dos campos de entrada e botão */
+  }
+
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px; /* Espaçamento interno dos botões */
+    font-size: 16px;
+    border-radius: 5px; /* Cantos arredondados dos botões */
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #c48510;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }

@@ -1,0 +1,63 @@
+body {
+    padding-top: 56px; /* Adapte para o tamanho da barra de navegação */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Adapte a fonte conforme necessário */
+  }
+
+  nav {
+    background-color: #f8f9fa; /* Cor de fundo suave da barra de navegação */
+    padding: 15px;
+    box-shadow: 0 4px 2px -2px gray; /* Sombra suave na barra de navegação */
+  }
+
+  nav a {
+    color: #007bff; /* Cor do texto dos links */
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 12px; /* Espaçamento interno dos links */
+    border-radius: 5px; /* Cantos arredondados dos links */
+  }
+
+  nav a:hover {
+    background-color: #007bff;
+    color: #fff; /* Cor do texto ao passar o mouse */
+  }
+
+  h2 {
+    color: #dc3545; /* Cor do título */
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  form {
+    max-width: 400px;
+    margin: auto;
+  }
+
+  input[type="submit"] {
+    background-color: #dc3545; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none;
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    font-size: 16px;
+    border-radius: 5px; /* Cantos arredondados do botão */
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #c82333; /* Cor de fundo do botão ao passar o mouse */
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff; /* Cor do texto do link de volta */
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline; /* Efeito de sublinhado ao passar o mouse */
+  }

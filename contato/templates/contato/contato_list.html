@@ -1,12 +1,38 @@
-{% comment %} {% extends "base.html" %} {% endcomment %}
-{% load static %}
+{% extends "global/partials/base.html" %}
 
 {% block content %}
   <h2>Lista de Contatos</h2>
-    <ul>
+
+  <nav class="navbar">
+    <a href="{% url 'home'%}">Página Inicial</a>
+    <a href="#">Contatos</a>
+    <a href="#">Sobre</a>
+    <a href="#">Blog</a>
+    <!-- Adicione mais links conforme necessário -->
+  </nav>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
       {% for contato in object_list %}
-      <li>{{ contato.nome }} - {{contato.telefone}} - {{ contato.email }} - <a href="{% url 'contato-update' pk=contato.pk %}">Editar</a> - <a href="{% url 'contato-delete' pk=contato.pk %}">Excluir</a></li>
+      <tr>
+        <td>{{ contato.nome }}</td>
+        <td>{{ contato.telefone }}</td>
+        <td>{{ contato.email }}</td>
+        <td>
+          <a class="btn btn-edit" href="{% url 'contato-update' pk=contato.pk %}">Editar</a>
+          <a class="btn btn-delete" href="{% url 'contato-delete' pk=contato.pk %}">Excluir</a>
+        </td>
+      </tr>
       {% endfor %}
-    </ul>
-    <a href="{% url 'contato-create' %}">Novo Contato</a>
+    </tbody>
+  </table>
+  <a class="btn btn-edit" href="{% url 'contato-create' %}">Novo Contato</a>
 {% endblock %}

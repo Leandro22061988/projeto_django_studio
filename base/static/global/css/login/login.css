@@ -1,0 +1,75 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Cor de fundo suave */
+}
+
+
+h2 {
+    color: #007bff; /* Cor do título */
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.success {
+    color: #28a745; /* Cor da mensagem de sucesso */
+}
+
+.error {
+    color: #dc3545; /* Cor da mensagem de erro */
+}
+
+form {
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Cor de fundo do formulário */
+    border: 1px solid #ddd; /* Borda fina ao redor do formulário */
+    border-radius: 5px; /* Cantos arredondados do formulário */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave no formulário */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd; /* Borda fina ao redor dos campos de entrada */
+    border-radius: 5px; /* Cantos arredondados dos campos de entrada */
+}
+
+input[type="submit"] {
+    background-color: #007bff; /* Cor de fundo do botão de submit */
+    color: #fff; /* Cor do texto do botão de submit */
+    border: none;
+    padding: 10px 20px; /* Espaçamento interno do botão de submit */
+    font-size: 16px;
+    border-radius: 5px; /* Cantos arredondados do botão de submit */
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Cor de fundo do botão de submit ao passar o mouse */
+}
+
+a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff; /* Cor do texto do link */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Efeito de sublinhado ao passar o mouse */
+}
